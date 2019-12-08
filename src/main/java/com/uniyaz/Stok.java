@@ -30,6 +30,14 @@ public class Stok {
         return Objects.hash(urun, urunAlanEleman, urunMiktari);
     }
 
+    public Urun getUrun() {
+        return urun;
+    }
+
+    public void setUrun(Urun urun) {
+        this.urun = urun;
+    }
+
     public Personel getUrunAlanEleman() {
         return urunAlanEleman;
     }

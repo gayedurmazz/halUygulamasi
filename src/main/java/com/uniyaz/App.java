@@ -23,7 +23,7 @@ public class App {
 
         }while (yeniKayit);
 
-        //stokleriListele();
+            stoklariListele(stokList);
     }
 
     public static void kayitOlustur(){
@@ -50,25 +50,34 @@ public class App {
                 Urun urun = new Elma();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
                 personel.urunAl(urun, alinanMiktar, stok);
+                stokList.add(stok);
+
             }else if (secim2 == 2){
                 Urun urun = new Armut();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
                 personel.urunAl(urun, alinanMiktar, stok);
+                stokList.add(stok);
+
             }
 
         }else if (secim == 2){
             System.out.println("1. Brokoli kaydı");
             System.out.println("2. Pırasa kaydı");
             int secim2 = scanner.nextInt();
+            System.out.println("Alınan miktarı giriniz: ");
             int alinanMiktar = scanner.nextInt();
             if (secim2 == 1){
                 Urun urun = new Brokoli();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
                 personel.urunAl(urun, alinanMiktar, stok);
+                stokList.add(stok);
+
             }else if (secim2 == 2){
                 Urun urun = new Pirasa();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
                 personel.urunAl(urun, alinanMiktar, stok);
+                stokList.add(stok);
+
             }
         }
 
@@ -76,8 +85,21 @@ public class App {
         System.out.println( );
     }
 
-    public static void stokleriListele(Urun listelenecekUrun, List<Stok> stokListesi){
+    public static void stoklariListele(List<Stok> stokListesi){
 
-
+        Scanner scanner = new Scanner(System.in);
+        for (Stok stok : stokListesi) {
+            System.out.println(stok.getUrunAlanEleman().getPersonelAdi()+"  "+stok.getUrun().getUrunAdi() +"  "+stok.getUrunMiktari()+"  "+ stok.getUrun().getMiktarTuru());
+        }
+//
+//        System.out.println("Toplamı istenen ürünü giriniz:");
+//        System.out.println("1. Elma/n 2.Armut /n 3. Pırasa/n 4. Brokoli/n");
+//        int secim = scanner.nextInt();
+//        String secilenUrunAdi;
+//        if (secim == 1){
+//            secilenUrunAdi =
+//        }
+        
     }
 }
+
