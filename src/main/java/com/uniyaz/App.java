@@ -37,12 +37,13 @@ public class App {
         System.out.println("Şeçim Yapınız:");
         System.out.println("1. Meyve kaydı");
         System.out.println("2. Sebze Kaydı");
+        System.out.println("3. Satış");
         int secim = scanner.nextInt();
-
+        int secim2;
         if(secim == 1){
             System.out.println("1. Elma kaydı");
             System.out.println("2. Armut kaydı");
-            int secim2 = scanner.nextInt();
+            secim2 = scanner.nextInt();
             System.out.println("Alınan miktarı giriniz: ");
             int alinanMiktar = scanner.nextInt();
 
@@ -63,7 +64,7 @@ public class App {
         }else if (secim == 2){
             System.out.println("1. Brokoli kaydı");
             System.out.println("2. Pırasa kaydı");
-            int secim2 = scanner.nextInt();
+            secim2 = scanner.nextInt();
             System.out.println("Alınan miktarı giriniz: ");
             int alinanMiktar = scanner.nextInt();
             if (secim2 == 1){
@@ -78,6 +79,31 @@ public class App {
                 personel.urunAl(urun, alinanMiktar, stok);
                 stokList.add(stok);
 
+            }
+        }else if(secim == 3){
+
+            System.out.println("Satmak istediğiniz ürünün kodunu giriniz: ");
+            System.out.println("1. Elma");
+            System.out.println("2. Armut");
+            System.out.println("3. Brokoli");
+            System.out.println("4. Pırasa");
+            secim2 = scanner.nextInt();
+            System.out.println("Satılacak ürün miktarını giriniz: ");
+            int satilacakMiktar = scanner.nextInt();
+            Satis satis = new Satis();
+            //////  ?????????????????    satis.setSatisMiktari(satilacakMiktar);
+            if(secim2 == 1){
+                Urun urun = new Elma();
+                satis.satisYap(urun, satilacakMiktar, stokList);
+            }else if(secim2 == 2){
+                Urun urun = new Armut();
+                satis.satisYap(urun, satilacakMiktar, stokList);
+            }else if(secim2 == 3){
+                Urun urun = new Brokoli();
+                satis.satisYap(urun, satilacakMiktar, stokList);
+            }else if(secim2 == 4){
+                Urun urun = new Pirasa();
+                satis.satisYap(urun, satilacakMiktar, stokList);
             }
         }
 
@@ -99,7 +125,7 @@ public class App {
 //        if (secim == 1){
 //            secilenUrunAdi =
 //        }
-        
+
     }
 }
 
