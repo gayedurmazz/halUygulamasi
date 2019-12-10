@@ -5,4 +5,9 @@ public class Pirasa extends Sebze {
     public String getUrunAdi() {
         return "Pırasa";
     }
+
+    @Override
+    public void urunAlisSekli() {
+        super.urunAlisSekli();
+    }
 }

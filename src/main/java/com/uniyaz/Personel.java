@@ -34,10 +34,12 @@ public class Personel implements KayitOlusturabilir, Serializable {
 
             if (secim2 == 1){
                 Urun urun = new Elma();
+                urun.urunAlisSekli();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
                 stokList.add(stok);
             }else if (secim2 == 2){
                 Urun urun = new Armut();
+                urun.urunAlisSekli();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
                 stokList.add(stok);
 
@@ -53,11 +55,13 @@ public class Personel implements KayitOlusturabilir, Serializable {
             int alinanMiktar = scanner.nextInt();
             if (secim2 == 1){
                 Urun urun = new Brokoli();
+                urun.urunAlisSekli();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
                 stokList.add(stok);
 
             }else if (secim2 == 2){
                 Urun urun = new Pirasa();
+                urun.urunAlisSekli();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
                 stokList.add(stok);
 

@@ -6,4 +6,9 @@ public class Elma extends Meyve {
     public String getUrunAdi() {
         return "Elma";
     }
+
+    @Override
+    public void urunAlisSekli() {
+        super.urunAlisSekli();
+    }
 }

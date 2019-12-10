@@ -7,4 +7,9 @@ public class Brokoli extends Sebze{
     public String getUrunAdi() {
         return "Brokoli";
     }
+
+    @Override
+    public void urunAlisSekli() {
+        super.urunAlisSekli();
+    }
 }

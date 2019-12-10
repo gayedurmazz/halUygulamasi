@@ -5,4 +5,9 @@ public class Armut extends Meyve {
     public String getUrunAdi() {
         return "Armut";
     }
+
+    @Override
+    public void urunAlisSekli() {
+        super.urunAlisSekli();
+    }
 }
