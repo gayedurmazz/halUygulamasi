@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface KayitOlusturabilir {
 
-    void kayitOluştur(List<Stok> stokList);
+    void kayitOlustur(List<Stok> stokList);
 
 }

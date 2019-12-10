@@ -7,6 +7,7 @@ public class Satis {
 
     private double satisMiktari;
 
+    App app = new App();
     public void satisYap(Urun urun, double satisMiktari, List<Stok> stokList) {
         double varOlanMiktar;
         for (Stok stok : stokList) {
@@ -17,6 +18,14 @@ public class Satis {
             }
         }
 
+     app.stokBilgileriniDosyayaYaz(stokList);
+
+        List<Stok> dosyadanOkunan = app.stokBilgileriniDosyadanOku();
+        System.out.println("DOSYADAN OKUMA");
+        for (Stok stok : dosyadanOkunan) {
+            System.out.println(stok.getUrunAlanEleman().getPersonelAdi()+"\t\t\t"+stok.getUrun().getUrunAdi() +"\t\t\t"+stok.getUrunMiktari()+"\t\t\t"+ stok.getUrun().getMiktarTuru());
+
+        }
     }
 
     public double getSatisMiktari() {

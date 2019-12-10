@@ -1,19 +1,20 @@
 package com.uniyaz;
 
+import java.io.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Personel implements KayitOlusturabilir {
+public class Personel implements KayitOlusturabilir, Serializable {
     private int id;
     private String personelAdi;
     private int alinanUrunMiktari;
-    
+
+    App app = new App();
     @Override
-    public void kayitOluştur(List<Stok> stokList) {
+    public void kayitOlustur(List<Stok> stokList) {
         Scanner scanner = new Scanner(System.in);
         Personel personel = new Personel();
-
         System.out.println( "Adınızı giriniz: " );
 
         String personelAdi = scanner.nextLine();
@@ -34,16 +35,15 @@ public class Personel implements KayitOlusturabilir {
             if (secim2 == 1){
                 Urun urun = new Elma();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
-                //personel.urunAl(urun, alinanMiktar, stok);
                 stokList.add(stok);
-
             }else if (secim2 == 2){
                 Urun urun = new Armut();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
-                //personel.urunAl(urun, alinanMiktar, stok);
                 stokList.add(stok);
 
             }
+            System.out.println("dosyaya yazma işlemi");
+            app.stokBilgileriniDosyayaYaz(stokList);
 
         }else if (secim == 2){
             System.out.println("1. Brokoli kaydı");
@@ -54,23 +54,34 @@ public class Personel implements KayitOlusturabilir {
             if (secim2 == 1){
                 Urun urun = new Brokoli();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
-                //personel.urunAl(urun, alinanMiktar, stok);
                 stokList.add(stok);
 
             }else if (secim2 == 2){
                 Urun urun = new Pirasa();
                 Stok stok = new Stok(urun , personel, alinanMiktar);
-                //personel.urunAl(urun, alinanMiktar, stok);
                 stokList.add(stok);
 
             }
+            System.out.println("dosyaya yazma işlemi");
+
+            app.stokBilgileriniDosyayaYaz(stokList);
+
         }else if(secim == 3){
-            App app = new App();
-            try {
-                app.stoklariListele(stokList);
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
+//            try {
+//                app.stoklariListele(stokList);
+//            } catch (Throwable throwable) {
+//                throwable.printStackTrace();
+//            }
+
+
+            List<Stok> dosyadanOkunan = app.stokBilgileriniDosyadanOku();
+
+            System.out.println("DOSYADAN OKUMA");
+            for (Stok stok : dosyadanOkunan) {
+                System.out.println(stok.getUrunAlanEleman().getPersonelAdi()+"\t\t\t"+stok.getUrun().getUrunAdi() +"\t\t\t"+stok.getUrunMiktari()+"\t\t\t"+ stok.getUrun().getMiktarTuru());
+
             }
+
             System.out.println("1. Elma");
             System.out.println("2. Armut");
             System.out.println("3. Brokoli");
@@ -93,12 +104,14 @@ public class Personel implements KayitOlusturabilir {
                 Urun urun = new Pirasa();
                 satis.satisYap(urun, satilacakMiktar, stokList);
             }
+            //List<Stok> dosyadanOkunan = app.stokBilgileriniDosyadanOku();
 
-            try {
-                app.stoklariListele(stokList);
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
+            //      satış sonrası
+//            try {
+//                app.stoklariListele(stokList);
+//            } catch (Throwable throwable) {
+//                throwable.printStackTrace();
+//            }
         }
 
         scanner.nextLine();

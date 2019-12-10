@@ -1,9 +1,10 @@
 package com.uniyaz;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class Stok {
+public class Stok implements Serializable {
 
     private Urun urun;
     private Personel urunAlanEleman;

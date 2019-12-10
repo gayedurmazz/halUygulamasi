@@ -1,10 +1,11 @@
 package com.uniyaz;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class App {
+public class App implements Serializable{
 
     static List<Stok> stokList = new ArrayList<>();
     private static Object NullPointerException;
@@ -15,7 +16,7 @@ public class App {
         Personel personel = new Personel();
         boolean yeniKayit = true;
         do{
-            personel.kayitOluştur(stokList);
+            personel.kayitOlustur(stokList);
             System.out.println("İşlemlere devam etmek için Y tuşuna basınız.");
             cevap = scanner.nextLine();
             if (cevap.equals("Y")){
@@ -53,7 +54,28 @@ public class App {
 //        if (secim == 1){
 //            secilenUrunAdi =
 //        }
+    }
+    public static void stokBilgileriniDosyayaYaz(List<Stok> stokListesi){
 
+        try (FileOutputStream fileOutputStream = new FileOutputStream(".\\stokListesi.txt", false);
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);) {
+            objectOutputStream.writeObject(stokListesi);
+            fileOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Stok> stokBilgileriniDosyadanOku(){
+
+            List<Stok> stokList = null;
+            try (FileInputStream fileOut = new FileInputStream(".\\stokListesi.txt");
+                 ObjectInputStream objectOut = new ObjectInputStream(fileOut);) {
+                stokList = (List<Stok>) objectOut.readObject();
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+            return stokList;
     }
 }
 
